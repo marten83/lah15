@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imgCont">
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/mapinfobg"
+            android:adjustViewBounds="true"/>
+    </FrameLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/topfade">
+    </View>
+
+    <se.martenolsson.lah15.classes.ObservableScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/paddinLayout"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageamall"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="true"/>
+
+            <TextView
+                android:id="@+id/musik"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:gravity="center"
+                android:maxLines="1"
+                style="@style/AudioFileInfoOverlayText"
+                android:text="Test"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="serif"
+                android:textStyle="bold"/>
+
+
+            <se.martenolsson.lah15.classes.AutoResizeTextView
+                android:id="@+id/title"
+                android:layout_width="fill_parent"
+                android:layout_height="55dp"
+                android:ellipsize="none"
+                android:gravity="center"
+                android:maxLines="1"
+                style="@style/AudioFileInfoOverlayText"
+                android:text="Test"
+                android:textColor="#ffffff"
+                android:textSize="40sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="serif"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/place"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:gravity="center"
+                android:maxLines="1"
+                style="@style/AudioFileInfoOverlayText"
+                android:text="Test"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="serif"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:weightSum="1"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="5dp">
+
+                <LinearLayout
+                    android:id="@+id/play"
+                    android:layout_weight="0.5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:background="@drawable/button_fill"
+                    android:baselineAligned="false"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"
+                    android:onClick="onButtonLyssna">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="fill_parent"
+                        android:src="@drawable/play"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="-10dp"/>
+
+                    <TextView
+                        android:id="@+id/button1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="10dp"
+                        android:lines="1"
+                        android:textColor="#ffffff"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="LYSSNA" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/stop"
+                    android:layout_weight="0.5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:background="@drawable/button_fill"
+                    android:baselineAligned="false"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"
+                    android:onClick="onButtonStop">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="fill_parent"
+                        android:src="@drawable/stop"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="-10dp"/>
+
+                    <TextView
+                        android:id="@+id/button4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="10dp"
+                        android:lines="1"
+                        android:textColor="#ffffff"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="PAUSA" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/vanta"
+                    android:layout_weight="0.5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:background="@drawable/button_fill"
+                    android:baselineAligned="false"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:visibility="visible">
+
+                    <ProgressBar
+                        android:id="@+id/loadsong"
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="-10dp">
+                    </ProgressBar>
+
+                    <TextView
+                        android:id="@+id/laddarlat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:lines="1"
+                        android:textColor="#ffffff"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="LADDAR LÅT"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/followBtn"
+                    android:layout_weight="0.5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:background="@drawable/button_fill2"
+                    android:baselineAligned="false"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:onClick="onButtonFollow">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="fill_parent"
+                        android:src="@drawable/heart"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="-10dp"/>
+
+                    <TextView
+                        android:id="@+id/button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="10dp"
+                        android:lines="1"
+                        android:textColor="#ffffff"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="FÖLJ" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/stopfollowBtn"
+                    android:layout_weight="0.5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:background="@drawable/button_fill2"
+                    android:baselineAligned="false"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"
+                    android:onClick="onstopButtonFollow">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="fill_parent"
+                        android:src="@drawable/dislike"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="-10dp"/>
+
+                    <TextView
+                        android:id="@+id/button3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="10dp"
+                        android:lines="1"
+                        android:textColor="#ffffff"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="AVFÖLJ" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/arrowdown"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:src="@drawable/arrowdown"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textSize="16dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="Test"
+                android:textColor="#FFFFFF"
+                android:background="#000000"/>
+
+        </LinearLayout>
+
+    </se.martenolsson.lah15.classes.ObservableScrollView>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool_bar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@android:color/transparent"
+        android:elevation="2dp"
+        app:theme="@style/ActionBar"
+        xmlns:android="http://schemas.android.com/apk/res/android" />
+
+</FrameLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <se.martenolsson.lah15.classes.ObservableWebView
+        android:id="@+id/webview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#FFFFFF"/>
+
+    <LinearLayout
+        android:id="@+id/loaderCont"
+        android:layout_width="fill_parent"
+        android:gravity="center"
+        android:layout_height="fill_parent">
+
+        <ProgressBar
+            android:id="@+id/loader"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="-10dp">
+        </ProgressBar>
+
+    </LinearLayout>
+
+</RelativeLayout>

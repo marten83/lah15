@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "se.martenolsson.lah15"
+        minSdkVersion 14
+        targetSdkVersion 21
+        renderscriptTargetApi 22
+        renderscriptSupportModeEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+repositories {
+    jcenter()
+    mavenCentral()  // GPUImage for Android
+}
+dependencies {
+    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.github.bumptech.glide:glide:3.5.2'
+    compile 'com.android.support:support-v4:22.0.0'
+
+    compile 'jp.wasabeef:glide-transformations:1.0.8'
+    // If you want to use the GPU Filters
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.2.3'
+
+    compile 'com.parse.bolts:bolts-android:1.+'
+    compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+}

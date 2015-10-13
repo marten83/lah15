@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang='sv'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no' />
+	<script src='file:///android_asset/jquery-2.1.1.min.js'></script>
+	<style>
+	body{
+		margin:0;
+	}
+	li,ul{
+	    list-style: outside none none;
+	    margin: 0;
+	    padding: 0;
+	}
+    .item:after {
+        border-bottom: 1px solid #ccc;
+        content: "";
+        display: block;
+        transform: scaleY(0.4);
+    }
+	.item::after {
+	    clear: both;
+	    content: "";
+	    display: block;
+	}
+	.chem > li > span {
+	    display: block;
+	    float: left;
+	    padding: 10px 0;
+	}
+	.follow.item{
+		font-weight: bold;
+	}
+	.time{
+		width: 13%;
+		margin-left: 1%;
+	}
+	.title{
+	    width: 45%;
+	}
+	.place {
+		width: 34%;
+	}
+	.chem > li .heart {
+	    display: none;
+	    width: 10%;
+	}
+	.chem > li.follow .heart {
+	    background-image: url("heart.png?2");
+	    background-position: center center;
+	    background-repeat: no-repeat;
+	    background-size: 25px auto;
+	    display: block;
+	    height: 34px;
+	    margin-right: 1%;
+	    padding: 0;
+	    width: 6%;
+	}
+	.container {
+	    font-family: arial;
+	    font-size: 12px;
+	    color: #353535;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="chem">
+	<li class="item nofollow"><span class="time">12.00</span><span class="title">Nellie Lovett (Americana)</span><span class="place">VÅGHUSTORGET</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">12.00</span><span class="title">Charlize Merighi Band (Americana)</span><span class="place">STALLBACKEN</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">12.30</span><span class="title">MAGNUSON (Rock)</span><span class="place">VÅGHUSTORGET</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">12.30</span><span class="title">NINA (Pop)</span><span class="place">STALLBACKEN</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">13.00</span><span class="title">Vindstyrka 12 (Rock)</span><span class="place">VÅGHUSTORGET</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">13.00</span><span class="title">moscowfish (Sing/Songwriter)</span><span class="place">STALLBACKEN</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">13.00</span><span class="title">Wilhelm Blixt (Sing/Songwriter)</span><span class="place">ÖREBRO SLOTTS RESTAURANG</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">13.30</span><span class="title">Petunia &amp; The Vipers (Americana)</span><span class="place">VÅGHUSTORGET</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">13.30</span><span class="title">Alyssa Jacey (Sing/Songwriter)</span><span class="place">STALLBACKEN</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">13.30</span><span class="title">Simon Walther Unplugged (Rock)</span><span class="place">ÖREBRO SLOTTS RESTAURANG</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">14.00</span><span class="title">Dennis Kalla (Pop)</span><span class="place">VÅGHUSTORGET</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">14.00</span><span class="title">Mathilda Wahlstedt (Sing/Songwriter)</span><span class="place">STALLBACKEN</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">14.00</span><span class="title">Fanny Holm (Americana)</span><span class="place">ÖREBRO SLOTTS RESTAURANG</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">14.30</span><span class="title">Bahia (Soul)</span><span class="place">VÅGHUSTORGET</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">14.30</span><span class="title">Bring The Mourning On (Americana)</span><span class="place">STALLBACKEN</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">14.30</span><span class="title">Richard Lindgren (Americana)</span><span class="place">ÖREBRO SLOTTS RESTAURANG</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">15.00</span><span class="title">Orango (Rock)</span><span class="place">VÅGHUSTORGET</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">15.00</span><span class="title">Emelie Irewald (Pop)</span><span class="place">STALLBACKEN</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">15.00</span><span class="title">Bobby Sant (Sing/Songwriter)</span><span class="place">ÖREBRO SLOTTS RESTAURANG</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">15.30</span><span class="title">Benesser (Progressive Rock)</span><span class="place">VÅGHUSTORGET</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">15.30</span><span class="title">Rubini (Jazz/Visa)</span><span class="place">STALLBACKEN</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">15.30</span><span class="title">Jimmy Nordin (Sing/Songwriter)</span><span class="place">ÖREBRO SLOTTS RESTAURANG</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">16.00</span><span class="title">FU*K (Rock)</span><span class="place">VÅGHUSTORGET</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">16.00</span><span class="title">Brittsommar (Americana)</span><span class="place">STALLBACKEN</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">16.00</span><span class="title">Old Lost John (Sing/Songwriter)</span><span class="place">ÖREBRO SLOTTS RESTAURANG</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">16.30</span><span class="title">State of Grace (Pop)</span><span class="place">VÅGHUSTORGET</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">16.30</span><span class="title">Sarah MacDougall (Folk)</span><span class="place">STALLBACKEN</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">16.30</span><span class="title">Oh Jonathan (Pop)</span><span class="place">ÖREBRO SLOTTS RESTAURANG</span><span class="heart"></span></li>
+
+<li class="item nofollow"><span class="time">19.00</span><span class="title">Full of Keys (Pop)</span><span class="place">Behrn Hotell</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">SoLBLoMMa (Pop)</span><span class="place">Clarion Hotel</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">Charlize Merighi Band (Americana)</span><span class="place">East West Sushi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">Sunset Serenaders (Americana)</span><span class="place">Kulturhuset</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">Sopot (Pop)</span><span class="place">Level</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">The String Contingent (New Acustic Chamber Folk)</span><span class="place">Nikolaikyrkan</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">Like Swimming (Pop)</span><span class="place">O’learys</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">Summer Crowd Stereo (Sing/Songwriter)</span><span class="place">Reiduns Café</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">Junior Scully (Sing/Songwriter)</span><span class="place">Saluhallen</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">Sandra Ruth Louise (Visa)</span><span class="place">Scandic Cupole</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">Alyssa Jacey (Sing/Songwriter)</span><span class="place">Scandic Veranda</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">Among Lynx (Blues)</span><span class="place">Soleo</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">19.00</span><span class="title">Studenter från Musikhögskolan</span><span class="place">Teatercaféet</span><span class="heart"></span></li>
+
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Markus (Sing/Songwriter)</span><span class="place">Behrn Hotell</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Louise Lemón (Pop)</span><span class="place">Clarion Hotel</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Soleil Camara (Reggae)</span><span class="place">East West Sushi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Portland View (Indie Pop)</span><span class="place">Harry’s</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Growling Bear &amp; The Blues Juice (Blues)</span><span class="place">Heavens Door</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Nothern Indians (Americana)</span><span class="place">Kulturhuset</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Emelie Irewald (Pop)</span><span class="place">Level</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">John Mitchell &amp; Sofie Andersson (Folk)</span><span class="place"> Nikolaikyrkan</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">The Blue Ruin (Rock)</span><span class="place">Nivå</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">The Spunkmeyers (Indie Pop)</span><span class="place">O’learys</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">JennyC (Rock)</span><span class="place">Rosengrens Skafferi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Jimmy Nordin (Sing/Songwriter)</span><span class="place">Saluhallen</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Karolina &amp; The TREEROOTS (Country)</span><span class="place">Scandic Cupole</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Folktåget (Pop)</span><span class="place">Scandic Elvy</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Grande Royale (Rock)</span><span class="place">Scandic Garage</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Nellie Lovett (Americana)</span><span class="place">Scandic Hjalmar</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Renate Rubini (Jazz/Visa)</span><span class="place">Scandic Veranda</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">NORAK (Electronic)</span><span class="place">Soleo</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Lionfly Secrets (Americana)</span><span class="place">Sweet Chili</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Studenter från Musikhögskolan</span><span class="place">Teatercaféet</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">20.00</span><span class="title">Markus Hultcrantz (Americana)</span><span class="place">Wobbler Lounge</span><span class="heart"></span></li>
+
+<li class="item nofollow"><span class="time">21.00</span><span class="title">moscowfish (Sing/Songwriter)</span><span class="place">Behrn Hotell</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">The Magnettes (Pop)</span><span class="place">Clarion Hotel</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">State of Grace (Pop)</span><span class="place">East West Sushi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Petunia &amp; The Vipers (Americana)</span><span class="place">Harry’s</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Bobby Sant (Sing/Songwriter)</span><span class="place">Heavens Door</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Richard Lindgren (Americana)</span><span class="place">Kulturhuset</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Bahia (Soul)</span><span class="place">Level</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Meadows ever Bleeding (Sing/Songwriter)</span><span class="place">Nikolaikyrkan</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Perry &amp; The Travellers (Rock)</span><span class="place">Nivå</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Julia &amp; The Basement Tapes (Blues)</span><span class="place">O’learys</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">M &amp; M’s Honky Tonk (Country)</span><span class="place">Reiduns Café</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">DSH5 (Folk)</span><span class="place">Rosengrens Skafferi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Dennis Kalla (Pop)</span><span class="place">Saluhallen</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Golden Jubilee Quartet (Gospel)</span><span class="place">Scandic Cupole</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Grand Trunk Travellers (Sing/Songwriter)</span><span class="place">Scandic Elvy</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Benesser (Progressive Rock)</span><span class="place">Scandic Garage</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Sarah MacDougall (Folk)</span><span class="place">Scandic Hjalmar</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Wilhelm Blixt (Sing/Songwriter)</span><span class="place">Scandic Veranda</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Dream Lake (Pop)</span><span class="place">Soleo</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Evon (Blues)</span><span class="place">Sweet Chili</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Studenter från Musikhögskolan</span><span class="place">Teatercaféet</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">21.00</span><span class="title">Mathilda Wahlstedt (Sing/Songwriter)</span><span class="place">Wobbler Lounge</span><span class="heart"></span></li>
+
+<li class="item nofollow"><span class="time">22.00</span><span class="title">EN DRÖS POETER (Indie Pop)</span><span class="place">Behrn Hotell</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Pingvinorkestern (Progressive Rock)</span><span class="place">Clarion Hotel</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Spetsnaz (Electronic)</span><span class="place">East West Sushi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Driving Cassady (Pop)</span><span class="place">Harry’s</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Janne Saaristo (Americana)</span><span class="place">Heavens Door</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Bert Deivert &amp; Copperhead Run (Blues)</span><span class="place">Kulturhuset</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Like Swimming (Pop)</span><span class="place">Level</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Carl Ewerth (Cabarét)</span><span class="place">Nikolaikyrkan</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Orango (Rock)</span><span class="place">Nivå</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Osten af &amp; Hyvlarna (Hiphop)</span><span class="place">O’learys</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Dimpker Brothers (Folk)</span><span class="place">Rosengrens Skafferi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Oh Jonathan (Pop)</span><span class="place">Saluhallen</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Sara Eidevald Unit (Soul)</span><span class="place">Scandic Cupole</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Bring The Mourning On (Americana)</span><span class="place">Scandic Elvy</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Maskin (Rock)</span><span class="place">Scandic Garage</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Rubini (Jazz/Visa)</span><span class="place">Scandic Hjalmar</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Old Lost John (Sing/Songwriter)</span><span class="place">Scandic Veranda</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Atlantic Francis (Folk).Soleo</span><span class="place">undefined</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">12th Letter (Hiphop)</span><span class="place">Sweet Chili</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Akosia (Reggae)</span><span class="place">Teatercaféet</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">22.00</span><span class="title">Rivertown Blues (Blues)</span><span class="place">Wobbler Lounge</span><span class="heart"></span></li>
+
+<li class="item nofollow"><span class="time">23.00</span><span class="title">The Blue Ruin (Rock)</span><span class="place">Behrn Hotell</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Billy Momo (Americana)</span><span class="place">Clarion Hotel</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Ladida (Punk)</span><span class="place">East West Sushi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">The Magnettes (Pop)</span><span class="place">Harry’s</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Six String Yada (Folk)</span><span class="place">Kulturhuset</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Heyra (Rock)</span><span class="place">Level</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Sarah MacDougall (Folk)</span><span class="place">Nikolaikyrkan</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Maddox Street (Hard Rock)</span><span class="place">Nivå</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">M-Rock the band (Funk)</span><span class="place">O’learys</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Nellie Lovett (Americana)</span><span class="place">Rosengrens Skafferi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">The Glorias (Electronic)</span><span class="place">Saluhallen</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Joybells (Gospel)</span><span class="place">Scandic Cupole</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Anouschka (Sing/Songwriter)</span><span class="place">Scandic Elvy</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Light Screamer (Punk)</span><span class="place">Scandic Garage</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Nelson-Westin Jazz Machine (Jazz)</span><span class="place">Scandic Hjalmar</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">THE MIGHTY STEF Unplugged (Rock)</span><span class="place">Scandic Veranda</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Twinleaf (Indie Pop)</span><span class="place">Soleo</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Deborah Henriksson (Folk)</span><span class="place">Sweet Chili</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Louise Lemón (Pop)</span><span class="place">Teatercaféet</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">23.00</span><span class="title">Beat City Tubeworks (Rock)</span><span class="place">Wobbler Lounge</span><span class="heart"></span></li>
+
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Bahia (Soul)</span><span class="place">Behrn Hotell</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Tullamore Brothers (Folk)</span><span class="place">Clarion Hotel</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">The White Raven (Rock)</span><span class="place">East West Sushi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">MAGNUSON (Rock)</span><span class="place">Harry’s</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Jetbone (Rock)</span><span class="place">Kulturhuset</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Anni Kannika (Sing/Songwriter)</span><span class="place">Level</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">The Lone Pine (Rock)</span><span class="place">Nivå</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Dead Man (Rock)</span><span class="place">O’learys</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Gunnar Danielsson (Sing/Songwriter)</span><span class="place">Rosengrens Skafferi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Pelle, Pelle &amp; Pelle (Pop)</span><span class="place">Scandic Cupole</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Sturle Dagsland (Avantgarde)</span><span class="place">Scandic Elvy</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Captain Crimson (Hard Rock)</span><span class="place">Scandic Garage</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Bellaroush (Reggae)</span><span class="place">Scandic Hjalmar</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Junior Scully (Sing/Songwriter)</span><span class="place">Scandic Veranda</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">HEADSTONED (Metal)</span><span class="place">Soleo</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Pete &amp; The Poets (Pop)</span><span class="place">Sweet Chili</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">M &amp; M’s Honky Tonk (Country)</span><span class="place">Teatercaféet</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">00.00</span><span class="title">Untitled (Indie Pop)</span><span class="place">Wobbler Lounge</span><span class="heart"></span></li>
+
+<li class="item nofollow"><span class="time">01.00</span><span class="title">Carl Ewerth (Cabarét)</span><span class="place">Clarion Hotel</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">01.00</span><span class="title">Oh Hiroshima (Rock)</span><span class="place">East West Sushi</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">01.00</span><span class="title">FU*K (Rock)</span><span class="place">Harry’s</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">01.00</span><span class="title">Thalamus (Hard Rock)</span><span class="place">Nivå</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">01.00</span><span class="title">Orango (Rock)</span><span class="place">O’learys</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">01.00</span><span class="title">Akosia (Reggae)</span><span class="place">Scandic Cupole</span><span class="heart"></span></li>
+<li class="item nofollow"><span class="time">01.00</span><span class="title">Captain Crow (Hard Rock)</span><span class="place">Scandic Garage</span><span class="heart"></span></li>
+</ul>
+	</div>
+	<script>
+	function ifollow(thelist){
+        var arr = thelist;
+        var array = arr.split(',');
+        jQuery('.item').each(function() {
+        	var theTitle = jQuery('.title',this).text().split("(")[0].trim();
+            if(jQuery.inArray(theTitle, array)!==-1){
+                if(!jQuery('.title',this).parent().hasClass('follow')){
+                    jQuery('.title',this).parent().addClass('follow')
+                    jQuery('.title',this).parent().removeClass('nofollow');
+                }
+            }
+        });
+    }
+    function removeNoFollow(){
+    	jQuery('.item.nofollow').each(function() {
+    		jQuery(this).css('display','none');
+    	});
+    }
+    function showNoFollow(){
+    	jQuery('.item.nofollow').each(function() {
+    		jQuery(this).css('display','block');
+    	});
+    }
+	</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:background="#CCCCCC"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        style="@style/AudioFileInfoOverlayText"
+        android:text=""
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="30dp"
+        android:padding="10dp"
+        android:textColor="#ffffff"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:layout_gravity="bottom|start"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/musik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            style="@style/AudioFileInfoOverlayText"
+            android:layout_gravity="bottom|start" />
+
+        <LinearLayout
+            android:id="@+id/placeCont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/musik"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_gravity="bottom|start"
+            >
+            <ImageView
+                android:id="@+id/pin"
+                android:layout_width="9dp"
+                android:layout_height="14dp"
+                android:background="@drawable/pin"
+                android:layout_gravity="center"
+                android:layout_below="@+id/title"
+                android:scaleType="fitCenter"
+                />
+
+            <TextView
+                android:id="@+id/place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#ffffff"
+                style="@style/AudioFileInfoOverlayText"
+                android:layout_marginLeft="2dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout><!-- From: file:/Users/martenolsson/Desktop/lah15/LAH15/app/src/main/res/layout/fallowlistview_item.xml -->

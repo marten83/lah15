@@ -1,0 +1,101 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="se.martenolsson.lah15"
+    android:versionCode="6"
+    android:versionName="1.5" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission android:protectionLevel="signature"
+        android:name="se.martenolsson.lah15.permission.C2D_MESSAGE" />
+    <uses-permission android:name="se.martenolsson.lah15.permission.C2D_MESSAGE" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:largeHeap="true"
+        android:hardwareAccelerated="true"
+        android:name=".ApplicationController"
+        >
+
+        <activity
+            android:name="se.martenolsson.lah15.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="se.martenolsson.lah15.SingleItemView"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true">
+        </activity>
+        <activity
+            android:name="se.martenolsson.lah15.FollowView"
+            android:label="Artister du följer"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true"
+            >
+        </activity>
+
+        <activity
+            android:name="se.martenolsson.lah15.chemeView"
+            android:label="Spelschema"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true"
+            >
+        </activity>
+
+        <activity
+            android:name=".AboutView"
+            android:label="Om LAH15"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true"
+            >
+        </activity>
+
+        <receiver android:name="se.martenolsson.lah15.AlarmReceiver"></receiver>
+
+        <service android:name="com.parse.PushService" />
+        <receiver android:name="com.parse.ParseBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="se.martenolsson.lah15.Receiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.parse.push.intent.RECEIVE" />
+                <action android:name="com.parse.push.intent.DELETE" />
+                <action android:name="com.parse.push.intent.OPEN" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="se.martenolsson.lah15" />
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="com.parse.push.notification_icon" android:resource="@drawable/status_icon"/>
+    </application>
+
+</manifest>
