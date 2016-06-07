@@ -1,21 +1,22 @@
 package se.martenolsson.lah15;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.TextView;
 
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 import se.martenolsson.lah15.classes.SlidingTabLayout;
 import se.martenolsson.lah15.classes.TinyDB;
 
 /**
  * Created by maroln on 15-08-19.
  */
-public class chemeView extends ActionBarActivity {
+public class chemeView extends SwipeBackActivity {
 
     // Declaring Your View and Variables
 
@@ -34,8 +35,8 @@ public class chemeView extends ActionBarActivity {
 
         tinydb = new TinyDB(this);
 
-        final ImageButton removenofollow =(ImageButton)findViewById(R.id.removenofollow);
-        final ImageButton shownofollow =(ImageButton)findViewById(R.id.shownofollow);
+        final TextView removenofollow = (TextView) findViewById(R.id.removenofollow);
+        final TextView shownofollow = (TextView) findViewById(R.id.shownofollow);
 
         if(tinydb.getBoolean("removefollow") == true){
             shownofollow.setVisibility(View.VISIBLE);
@@ -85,9 +86,17 @@ public class chemeView extends ActionBarActivity {
         });
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setTitle("Spelschema");
+        Typeface geoSans = ((ApplicationController) getApplicationContext()).geoSans;
+        TextView headerText = (TextView) findViewById(R.id.headerText);
+        headerText.setTypeface(geoSans);
+
+        TextView closeView = (TextView) findViewById(R.id.closeView);
+        closeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.

@@ -1,19 +1,22 @@
 package se.martenolsson.lah15;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 
 import java.util.ArrayList;
 
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 import se.martenolsson.lah15.classes.TinyDB;
 
-public class FollowView extends ActionBarActivity {
+public class FollowView extends SwipeBackActivity {
 
 	// Declare Variables
 	ListView list;
@@ -41,11 +44,19 @@ public class FollowView extends ActionBarActivity {
 		setContentView(R.layout.fallowlistview);
 
 		tinydb = new TinyDB(this);
-
 		toolbar = (Toolbar) findViewById(R.id.tool_bar);
-		setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		toolbar.setTitle("Artister jag följer");
+
+		Typeface geoSans = ((ApplicationController) getApplicationContext()).geoSans;
+		TextView headerText = (TextView) findViewById(R.id.headerText);
+		headerText.setTypeface(geoSans);
+
+        TextView closeView = (TextView) findViewById(R.id.closeView);
+        closeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 		loadInList();
 

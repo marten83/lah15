@@ -22,13 +22,14 @@
             android:id="@+id/search"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:textSize="14dp"
+            android:textSize="18dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:layout_margin="5dp"
             android:background="@drawable/input_border"
+            android:textColor="#000000"
             android:hint="Sök efter artist eller genre.">
         </EditText>
 
@@ -40,13 +41,14 @@
             android:layout_marginTop="15dip"
             android:layout_gravity="top|end">
 
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:src="@drawable/sok"
+            <se.martenolsson.lah15.classes.IconTextView
+                android:layout_width="match_parent"
                 android:gravity="center"
-                android:contentDescription="@null"
-                android:scaleType="fitXY"/>
+                android:layout_gravity="center"
+                android:textSize="19sp"
+                android:layout_height="match_parent"
+                android:textColor="#c2c2c2"
+                android:text="&#xf1cc;"/>
 
         </LinearLayout>
 
@@ -60,69 +62,114 @@
             android:smoothScrollbar="true"
             android:scrollingCache="false"
             android:animationCache="false"
-            android:choiceMode="singleChoice"/>
+            android:choiceMode="singleChoice"
+            android:dividerHeight="1dp"/>
 
         <LinearLayout
             android:id="@+id/follow_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:background="@drawable/lila"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dip"
             android:layout_marginStart="10dip"
             android:layout_marginBottom="10dip"
-            android:layout_gravity="bottom|start">
+            android:layout_gravity="left|bottom"
+            android:onClick="onFollow">
 
-            <ImageButton
-                android:id="@+id/toTop"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/heart1"
-                android:background="@drawable/round"
+            <se.martenolsson.lah15.classes.IconTextView
+                android:layout_width="match_parent"
                 android:gravity="center"
-                android:contentDescription="@null"
-                android:scaleType="fitCenter"
-                android:onClick="onFollow" />
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:layout_height="match_parent"
+                android:textColor="#ffffff"
+                android:text="&#xf19b;"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/menu_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:background="@drawable/round"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginRight="10dip"
             android:layout_marginBottom="10dip"
-            android:layout_gravity="bottom|end">
+            android:layout_gravity="bottom|end"
+            android:onClick="onMenu">
 
-            <ImageButton
-                android:id="@+id/manu"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/menu"
-                android:background="@drawable/round"
+            <se.martenolsson.lah15.classes.IconTextView
+                android:layout_width="match_parent"
                 android:gravity="center"
-                android:contentDescription="@null"
-                android:scaleType="fitCenter"
-                android:onClick="onMenu" />
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:layout_height="match_parent"
+                android:textColor="#ffffff"
+                android:text="&#xf1c2;"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/menu_playlist"
+            android:background="@drawable/controlers"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="70dip"
+            android:layout_marginBottom="10dip"
+            android:layout_gravity="bottom|end"
+            android:onClick="onPlaylist">
+
+            <se.martenolsson.lah15.classes.IconTextView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:layout_height="match_parent"
+                android:textColor="#ffffff"
+                android:text="&#xf105;"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/playBtn"
+            android:visibility="gone"
+            android:background="@drawable/roundgreen"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="0dip"
+            android:layout_marginBottom="10dip"
+            android:layout_gravity="bottom|center"
+            android:onClick="onPlay">
+
+            <se.martenolsson.lah15.classes.IconTextView
+                android:id="@+id/playBtnText"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:layout_height="match_parent"
+                android:textColor="#ffffff"
+                android:text="&#xf1f9;"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/cheme_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:background="@drawable/round"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="70dip"
             android:layout_marginBottom="10dip"
-            android:layout_gravity="bottom|start">
+            android:layout_gravity="bottom|start"
+            android:onClick="onChem">
 
-            <ImageButton
-                android:id="@+id/chem"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/clock"
-                android:background="@drawable/round"
+            <se.martenolsson.lah15.classes.IconTextView
+                android:layout_width="match_parent"
                 android:gravity="center"
-                android:contentDescription="@null"
-                android:scaleType="fitCenter"
-                android:onClick="onChem" />
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:layout_height="match_parent"
+                android:textColor="#ffffff"
+                android:text="&#xf257;"/>
 
         </LinearLayout>
 
@@ -145,17 +192,21 @@
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
             android:baselineAligned="false"
-            android:onClick="onMenuBtn1">
+            android:onClick="onMenuBtn1"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="fill_parent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/clock"
-                android:gravity="left"
-                android:layout_marginLeft="10dp"/>
+            <se.martenolsson.lah15.classes.IconTextView
+                android:layout_width="wrap_content"
+                android:paddingStart="10dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:layout_height="match_parent"
+                android:textColor="#ffffff"
+                android:text="&#xf257;"/>
 
             <TextView
+                android:id="@+id/menu1Text"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="10dp"
@@ -163,7 +214,8 @@
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:text="SPELSCHEMA" />
+                android:text="Spelschema"
+                android:textSize="20sp"/>
 
         </LinearLayout>
 
@@ -174,17 +226,21 @@
             android:gravity="left"
             android:background="@android:color/transparent"
             android:baselineAligned="false"
-            android:onClick="onMenuBtn2">
+            android:onClick="onMenuBtn2"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="fill_parent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/heart1"
-                android:gravity="left"
-                android:layout_marginLeft="10dp"/>
+            <se.martenolsson.lah15.classes.IconTextView
+                android:layout_width="wrap_content"
+                android:paddingStart="10dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:layout_height="match_parent"
+                android:textColor="#ffffff"
+                android:text="&#xf19b;"/>
 
             <TextView
+                android:id="@+id/menu2Text"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="10dp"
@@ -192,7 +248,8 @@
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:text="ARTISTER JAG FÖLJER" />
+                android:text="Artister jag följer"
+                android:textSize="20sp"/>
 
         </LinearLayout>
 
@@ -205,15 +262,18 @@
             android:baselineAligned="false"
             android:onClick="onMenuBtn3">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="fill_parent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/info"
-                android:gravity="left"
-                android:layout_marginLeft="10dp"/>
+            <se.martenolsson.lah15.classes.IconTextView
+                android:layout_width="wrap_content"
+                android:paddingStart="10dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="22sp"
+                android:layout_height="match_parent"
+                android:textColor="#ffffff"
+                android:text="&#xf1ab;"/>
 
             <TextView
+                android:id="@+id/menu3Text"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="10dp"
@@ -221,9 +281,10 @@
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:text="OM LAH15" />
+                android:textSize="20sp"
+                android:text="Om Lah15" />
 
         </LinearLayout>
 
     </LinearLayout>
-</android.support.v4.widget.DrawerLayout><!-- From: file:/Users/martenolsson/Desktop/lah15/LAH15/app/src/main/res/layout/listview_main.xml -->
+</android.support.v4.widget.DrawerLayout><!-- From: file:/Users/martenolsson/Documents/lah15/lah15/LAH15/app/src/main/res/layout/listview_main.xml -->

@@ -5,12 +5,15 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
@@ -20,6 +23,7 @@ import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,6 +45,10 @@ public class MainActivity extends Activity  {
 	DrawerLayout mDrawerLayout;
 	LinearLayout sok;
 
+	MediaPlayer myMediaPlayer;
+	LinearLayout playBtn;
+    TextView playBtnText;
+
 	Boolean searchHasFocus = false;
 
 	ArrayList<String> listofitems = new ArrayList<>();
@@ -55,9 +63,19 @@ public class MainActivity extends Activity  {
 	private static final String TAG_TEXT = "text";
 	private static final String TAG_MP3 = "mp3";
 	private static final String TAG_IMAGE = "image";
+
+    /*private static final String TAG_ARTICLE = "payload";
+    private static final String TAG_TITLE = "namenormalized";
+    private static final String TAG_MUSIK = "category";
+    private static final String TAG_PLACE = "city";
+    private static final String TAG_TEXT = "description";
+    private static final String TAG_MP3 = "songurl";
+    private static final String TAG_IMAGE = "image";*/
+
 	JSONArray allmarkers = null;
 
-	//NotificationManager notificationManager;
+	Typeface titleText;
+    Context mContext;
 
 	//Handle backbtn
 	@Override
@@ -95,19 +113,48 @@ public class MainActivity extends Activity  {
 		this.startActivity(intent);
 	}
 
+    public void onPlay(View v){
+        if(myMediaPlayer.getCurrentPosition()>0 && !myMediaPlayer.isPlaying()){
+            myMediaPlayer.start();
+            playBtnText.setText(Html.fromHtml("&#xf1f9;"));
+        }
+        else if(myMediaPlayer.getCurrentPosition()>0){
+            myMediaPlayer.pause();
+            playBtnText.setText(Html.fromHtml("&#xf115;"));
+        }
+    }
+
 	public void onMenu(View v){
 		mDrawerLayout.openDrawer(Gravity.LEFT);
 	}
+
+    public void onPlaylist(View v){
+        Intent intent = new Intent(this, playListView.class);
+        this.startActivity(intent);
+    }
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listview_main);
 
+        mContext = this;
+
 		//Debugg in chrome
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			WebView.setWebContentsDebuggingEnabled(true);
 		}
+		Typeface geoSans = ((ApplicationController) mContext.getApplicationContext()).geoSans;
+		TextView menuText1 = (TextView) findViewById(R.id.menu1Text);
+		TextView menuText2 = (TextView) findViewById(R.id.menu2Text);
+		TextView menuText3 = (TextView) findViewById(R.id.menu3Text);
+		menuText1.setTypeface(geoSans);
+		menuText2.setTypeface(geoSans);
+		menuText3.setTypeface(geoSans);
+
+		myMediaPlayer = ((ApplicationController) getApplicationContext()).myMediaPlayer;
+		playBtn = (LinearLayout) findViewById(R.id.playBtn);
+        playBtnText = (TextView) findViewById(R.id.playBtnText);
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
 
@@ -147,19 +194,21 @@ public class MainActivity extends Activity  {
 		manager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
 		/*end BackgroundTask*/
 
+        titleText = ((ApplicationController) getApplicationContext()).geoSans;
 		sok = (LinearLayout) findViewById(R.id.sok);
 		editsearch = (EditText) findViewById(R.id.search);
+        editsearch.setTypeface(titleText);
 		editsearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
 			public void onFocusChange(View v, boolean hasFocus) {
 				if (hasFocus) {
 					searchHasFocus = true;
-					sok.setVisibility(View.GONE);
+					//sok.setVisibility(View.GONE);
 					list.smoothScrollToPosition(0);
 
 				} else {
 					searchHasFocus = false;
-					sok.setVisibility(View.VISIBLE);
+					//sok.setVisibility(View.VISIBLE);
 				}
 			}
 		});
@@ -210,11 +259,16 @@ public class MainActivity extends Activity  {
 		}
 
 		// Pass results to ListViewAdapter Class
-		adapter = new ListViewAdapter(this, arraylist);
+		adapter = new ListViewAdapter(this, arraylist, playBtn, playBtnText, myMediaPlayer);
 
 		// Binds the Adapter to the ListView
 		list.setAdapter(adapter);
 	}
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 
 	@Override
 	public void onResume() {
@@ -222,6 +276,13 @@ public class MainActivity extends Activity  {
 		if(adapter!=null) {
 			adapter.notifyDataSetChanged();
 		}
+
+        if(myMediaPlayer.isPlaying()) {
+            playBtn.setVisibility(View.VISIBLE);
+            playBtnText.setText(Html.fromHtml("&#xf1f9;"));
+        }else{
+            playBtn.setVisibility(View.GONE);
+        }
 	}
 	/*Get json for map*/
 	private class JSONParse extends AsyncTask<String, String, JSONObject> {
@@ -231,7 +292,7 @@ public class MainActivity extends Activity  {
 		@Override
 		protected JSONObject doInBackground(String... args) {
 			JSONParser jParser = new JSONParser();
-			//JSONObject json = jParser.getJSONFromUrl("http://na.se/misc/app/openart/filer/openart.js");
+			//JSONObject json = jParser.getJSONFromUrl("http://lah16.bastardcreative.se/api/artists");
 			JSONObject json = jParser.getJSONFromUrl("http://martenolsson.se/lah15/lah15_2.js?9");
 
 			return json;

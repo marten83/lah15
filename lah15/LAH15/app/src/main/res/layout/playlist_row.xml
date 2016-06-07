@@ -1,0 +1,66 @@
+<com.daimajia.swipe.SwipeLayout
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    swipe:leftEdgeSwipeOffset="0dp"
+    swipe:rightEdgeSwipeOffset="0dp">
+
+<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="top|center"
+        android:tag="Bottom3"
+        android:weightSum="12">
+
+    <LinearLayout
+        android:id="@+id/removeFromPlayList"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#F22E2B">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <se.martenolsson.lah15.classes.IconTextView
+                android:id="@+id/smp"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="22sp"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:text="&#xf161;"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000">
+
+        <RelativeLayout
+            android:id="@+id/viewCont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#353535"
+            android:layout_marginTop="1dp">
+
+            <TextView
+                android:id="@+id/artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:padding="17dp"/>
+
+        </RelativeLayout>
+
+</LinearLayout>
+</com.daimajia.swipe.SwipeLayout>

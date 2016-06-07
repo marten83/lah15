@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 23
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "se.martenolsson.lah15"
-        minSdkVersion 14
-        targetSdkVersion 21
-        renderscriptTargetApi 22
+        minSdkVersion 19
+        targetSdkVersion 23
+        renderscriptTargetApi 20
         renderscriptSupportModeEnabled true
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -24,10 +25,16 @@ repositories {
     mavenCentral()  // GPUImage for Android
 }
 dependencies {
-    compile 'com.android.support:support-v4:21.0.3'
-    compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.github.bumptech.glide:glide:3.5.2'
-    compile 'com.android.support:support-v4:22.0.0'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:support-v4:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.florent37:glidepalette:1.0.6'
+    compile 'com.android.support:recyclerview-v7:+'
+
+    compile 'me.imid.swipebacklayout.lib:library:1.0.0'
+
+    compile "com.daimajia.swipelayout:library:1.2.0@aar"
 
     compile 'jp.wasabeef:glide-transformations:1.0.8'
     // If you want to use the GPU Filters

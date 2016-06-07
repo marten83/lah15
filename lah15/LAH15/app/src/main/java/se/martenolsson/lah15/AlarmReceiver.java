@@ -39,6 +39,15 @@ public class AlarmReceiver extends BroadcastReceiver {
     private static final String TAG_TEXT = "text";
     private static final String TAG_MP3 = "mp3";
     private static final String TAG_IMAGE = "image";
+
+    /*private static final String TAG_ARTICLE = "payload";
+    private static final String TAG_TITLE = "namenormalized";
+    private static final String TAG_MUSIK = "category";
+    private static final String TAG_PLACE = "city";
+    private static final String TAG_TEXT = "description";
+    private static final String TAG_MP3 = "songurl";
+    private static final String TAG_IMAGE = "image";*/
+
     JSONArray allmarkers = null;
 
     @Override
@@ -136,6 +145,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             strDateday = sdfday.format(c.getTime());
 
             JSONParser jParser = new JSONParser();
+            //JSONObject json = jParser.getJSONFromUrl("http://lah16.bastardcreative.se/api/artists?"+strDateday);
             JSONObject json = jParser.getJSONFromUrl("http://martenolsson.se/lah15/lah15_2.js?"+strDateday);
 
             return json;

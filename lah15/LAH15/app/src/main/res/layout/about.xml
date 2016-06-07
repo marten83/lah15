@@ -14,8 +14,35 @@
         android:layout_width="match_parent"
         android:background="@color/primary_dark_material_dark"
         android:elevation="2dp"
-        app:theme="@style/ActionBar"
-        xmlns:android="http://schemas.android.com/apk/res/android" />
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEnd="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp">
+
+        <se.martenolsson.lah15.classes.IconTextView
+            android:id="@+id/closeView"
+            android:layout_width="55dp"
+            android:gravity="center"
+            android:layout_gravity="left"
+            android:textSize="22sp"
+            android:layout_height="55dp"
+            android:textColor="#ffffff"
+            android:text="&#xf1b6;"/>
+
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Om LAH15"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20dp"/>
+
+    </android.support.v7.widget.Toolbar>
 
     <TextView
         android:layout_width="fill_parent"

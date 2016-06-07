@@ -1,25 +1,28 @@
 package se.martenolsson.lah15;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
-import android.media.AudioManager;
+import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.github.florent37.glidepalette.GlidePalette;
 import com.parse.ParsePush;
 
 import java.io.IOException;
@@ -27,15 +30,29 @@ import java.util.ArrayList;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 import se.martenolsson.lah15.classes.ObservableScrollView;
 import se.martenolsson.lah15.classes.TinyDB;
+import se.martenolsson.lah15.classes.mediaPlayer;
 
-public class SingleItemView extends ActionBarActivity implements ObservableScrollView.OnScrollChangedListener {
+public class SingleItemView extends SwipeBackActivity implements ObservableScrollView.OnScrollChangedListener {
 	// Declare Variables
 	TextView txtTitle;
 	TextView txtText;
 	TextView txtMusik;
 	TextView txtPlace;
+    Typeface titleText;
+    Typeface smallText;
+
+    TextView button1;
+    TextView button2;
+    TextView button3;
+    TextView button4;
+    TextView button5;
+
+    FrameLayout hiddenImageCont;
+    ImageView hiddenImage;
+
 	ImageView largeImage;
 	ImageView smallImage;
 
@@ -50,8 +67,9 @@ public class SingleItemView extends ActionBarActivity implements ObservableScrol
 
 	float density;
 
-	//MediaPlayer player;
-	MediaPlayer myMediaPlayer;
+    MediaPlayer myMediaPlayer;
+    //String mediaUrl;
+    Boolean fromPlayBtn = false;
 
 	LinearLayout followBtn;
 	LinearLayout stopFollowBtn;
@@ -68,9 +86,6 @@ public class SingleItemView extends ActionBarActivity implements ObservableScrol
 	@Override
 	public void onBackPressed(){
 		this.finish();
-		if(myMediaPlayer.isPlaying()){
-			myMediaPlayer.stop();
-		}
 	}
 	public void onButtonStop(View v) throws IOException {
 		playBtn.setVisibility(View.VISIBLE);
@@ -79,8 +94,8 @@ public class SingleItemView extends ActionBarActivity implements ObservableScrol
 	}
 	public void onButtonLyssna(View v) throws IOException {
 		playBtn.setVisibility(View.GONE);
-		stopBtn.setVisibility(View.VISIBLE);
-		myMediaPlayer.start();
+        fromPlayBtn = true;
+        new mediaPlayer(this, title, mp3, fromPlayBtn, vanta, stopBtn, playBtn, true);
 	}
 
 	public void onstopButtonFollow(View v) {
@@ -93,25 +108,25 @@ public class SingleItemView extends ActionBarActivity implements ObservableScrol
 				stopFollowBtn.setVisibility(View.GONE);
 
 				ParsePush.unsubscribeInBackground(title
-						.replace(" ", "")
-						.replace("*", "")
-						.replace("'", "")
-						.replace("-", "")
-						.replace("/", "")
-						.replace(",", "")
-						.replace("ü", "u")
-						.replace("Ü", "U")
-						.replace("é", "e")
-						.replace("É", "E")
-						.replace("&", "")
-						.replace("å", "a")
-						.replace("ä", "a")
-						.replace("ö", "o")
-						.replace("Å", "A")
-						.replace("Ä", "A")
-						.replace("Ö", "O")
-						.replaceAll("[0-9]", "")
-				);
+                                .replace(" ", "")
+                                .replace("*", "")
+                                .replace("'", "")
+                                .replace("-", "")
+                                .replace("/", "")
+                                .replace(",", "")
+                                .replace("ü", "u")
+                                .replace("Ü", "U")
+                                .replace("é", "e")
+                                .replace("É", "E")
+                                .replace("&", "")
+                                .replace("å", "a")
+                                .replace("ä", "a")
+                                .replace("ö", "o")
+                                .replace("Å", "A")
+                                .replace("Ä", "A")
+                                .replace("Ö", "O")
+                                .replaceAll("[0-9]", "")
+                );
 			}
 
 		}
@@ -162,16 +177,29 @@ public class SingleItemView extends ActionBarActivity implements ObservableScrol
 		setContentView(R.layout.singleitemview);
 
 		toolbar = (Toolbar) findViewById(R.id.tool_bar);
-		setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        smallText = ((ApplicationController) getApplicationContext()).caviar;
+        titleText = ((ApplicationController) getApplicationContext()).geoSansBold;
 
 		followBtn = (LinearLayout) findViewById(R.id.followBtn);
 		stopFollowBtn = (LinearLayout) findViewById(R.id.stopfollowBtn);
 		playBtn = (LinearLayout) findViewById(R.id.play);
 		stopBtn = (LinearLayout) findViewById(R.id.stop);
 		vanta = (LinearLayout) findViewById(R.id.vanta);
+
+        button1 = (TextView) findViewById(R.id.button1);
+        button2 = (TextView) findViewById(R.id.button2);
+        button3 = (TextView) findViewById(R.id.button3);
+        button4 = (TextView) findViewById(R.id.button4);
+        button5 = (TextView) findViewById(R.id.laddarlat);
+
+        button1.setTypeface(titleText);
+        button2.setTypeface(titleText);
+        button3.setTypeface(titleText);
+        button4.setTypeface(titleText);
+        button5.setTypeface(titleText);
+
+        hiddenImageCont = (FrameLayout) findViewById(R.id.imgCont2);
+        hiddenImage = (ImageView) findViewById(R.id.image2);
 
 		mScrollView = (ObservableScrollView)findViewById(R.id.scrollview);
 		mScrollView.setOnScrollChangedListener(this);
@@ -185,10 +213,10 @@ public class SingleItemView extends ActionBarActivity implements ObservableScrol
 		Point size = new Point();
 		display.getSize(size);
 		int screenHeight = size.y / (int)density;
-		int textHeight = 370;
+		int textHeight = 400;
 		int paddingTop = (screenHeight - textHeight) * (int)density;
 		//Log.e("test", String.valueOf(paddingTop));
-		LinearLayout layout = (LinearLayout) findViewById(R.id.paddinLayout);
+		RelativeLayout layout = (RelativeLayout) findViewById(R.id.paddinLayout);
 		layout.setPadding(0,paddingTop,0,0);
 
 		// Retrieve data from MainActivity on item click event
@@ -201,47 +229,9 @@ public class SingleItemView extends ActionBarActivity implements ObservableScrol
 		mp3 = i.getStringExtra("mp3");
 
 		/*Player*/
-		String url = mp3.replace(" ","%20").replace("¦", "%C2%A6"); // your URL here
-		//Log.e("test", url);
+		myMediaPlayer = ((ApplicationController) getApplicationContext()).myMediaPlayer;
 
-		myMediaPlayer = new MediaPlayer();
-		myMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-		try {
-			myMediaPlayer.setDataSource(url);
-			myMediaPlayer.prepareAsync(); // might take long! (for buffering, etc)
-			myMediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-				@Override
-				public boolean onError(final MediaPlayer mp, final int what, final int extra) {
-					ProgressBar loadsong = (ProgressBar) findViewById(R.id.loadsong);
-					TextView laddarlat = (TextView) findViewById(R.id.laddarlat);
-					laddarlat.setText("LÅT EJ TILLGÄNGLIG");
-					loadsong.setVisibility(View.GONE);
-					vanta.setVisibility(View.GONE);
-					return false;
-				}
-			});
-
-		} catch (IOException e) {
-			ProgressBar loadsong = (ProgressBar) findViewById(R.id.loadsong);
-			TextView laddarlat = (TextView) findViewById(R.id.laddarlat);
-			laddarlat.setText("LÅT EJ TILLGÄNGLIG");
-			loadsong.setVisibility(View.GONE);
-			vanta.setVisibility(View.GONE);
-			//Toast.makeText(this, "mp3 not found", Toast.LENGTH_SHORT).show();
-			e.printStackTrace();
-		}
-
-		//mp3 will be started after completion of preparing...
-		myMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-
-			@Override
-			public void onPrepared(MediaPlayer player) {
-				vanta.setVisibility(View.GONE);
-				playBtn.setVisibility(View.VISIBLE);
-			}
-
-		});
-
+        new mediaPlayer(this, title, mp3, fromPlayBtn, vanta, stopBtn, playBtn, true);
 		/*end Player*/
 
 		followList = tinydb.getList("followList");
@@ -257,18 +247,21 @@ public class SingleItemView extends ActionBarActivity implements ObservableScrol
 			stopFollowBtn.setVisibility(View.VISIBLE);
 		}
 
-		// Locate the TextViews in singleitemview.xml
 		txtMusik = (TextView) findViewById(R.id.musik);
+        txtMusik.setTypeface(smallText);
 		txtTitle = (TextView) findViewById(R.id.title);
+        txtTitle.setTypeface(titleText);
 		txtPlace = (TextView) findViewById(R.id.place);
+        txtPlace.setTypeface(smallText);
 		txtText = (TextView) findViewById(R.id.text);
+        txtText.setTypeface(smallText);
 		largeImage = (ImageView) findViewById(R.id.image);
 		smallImage = (ImageView) findViewById(R.id.imageamall);
 		ImageView arrowDown = (ImageView) findViewById(R.id.arrowdown);
 
 
 		// Load the results into the TextViews
-		txtMusik.setText(musik);
+		txtMusik.setText(musik.toUpperCase());
 		txtTitle.setText(title);
 		txtPlace.setText(place);
 
@@ -278,10 +271,18 @@ public class SingleItemView extends ActionBarActivity implements ObservableScrol
 			txtText.setVisibility(View.GONE);
 			arrowDown.setVisibility(View.GONE);
 		}
-		Glide.with(this)
+
+        final Context mContext = this;
+        Glide.with(this)
 				.load(image)
 				.centerCrop()
 				.bitmapTransform(new BlurTransformation(this, Glide.get(this).getBitmapPool()))
+                .listener(
+                        GlidePalette.with(image)
+                                .use(GlidePalette.Profile.MUTED_DARK)
+                                .intoBackground(txtText)
+                                .intoTextColor(txtText)
+                )
 				.into(largeImage);
 
 		Glide.with(this)
@@ -289,6 +290,27 @@ public class SingleItemView extends ActionBarActivity implements ObservableScrol
 				.bitmapTransform(new CropCircleTransformation(Glide.get(this).getBitmapPool()))
 				.into(smallImage);
 
+        Glide.with(this)
+                .load(image)
+                .into(hiddenImage);
+
+
+        smallImage.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    hiddenImageCont.setVisibility(View.VISIBLE);
+                    smallImage.setVisibility(View.INVISIBLE);
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    hiddenImageCont.setVisibility(View.INVISIBLE);
+                    smallImage.setVisibility(View.VISIBLE);
+                } else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    hiddenImageCont.setVisibility(View.INVISIBLE);
+                    smallImage.setVisibility(View.VISIBLE);
+                }
+                return true;
+            }
+        });
 	}
 
 	@Override
@@ -304,24 +326,46 @@ public class SingleItemView extends ActionBarActivity implements ObservableScrol
 			//Top Icon
 			case android.R.id.home:
 				this.finish();
-				if(myMediaPlayer.isPlaying()){
-					myMediaPlayer.stop();
-				}
+                /*if(myMediaPlayer.isPlaying()){
+                    myMediaPlayer.stop();
+                    myMediaPlayer.release();
+                    myMediaPlayer = null;
+                }*/
 				break;
 
 		}
 		return false;
 	}
 
+    Rect scrollBounds = new Rect();
+
 	@Override
 	public void onScrollChanged(int deltaX, int deltaY) {
 		int scrollY = mScrollView.getScrollY();
 		int ScrollValue = (int) ((scrollY * (int)density)/7.5);
 
-		FrameLayout linearLayout =  (FrameLayout) findViewById(R.id.imgCont);
-		FrameLayout.LayoutParams params = (FrameLayout.LayoutParams)linearLayout.getLayoutParams();
-		params.setMargins(0, -ScrollValue, 0, ScrollValue);
-		linearLayout.setLayoutParams(params);
-		linearLayout.requestLayout();
-	}
+		LinearLayout btnCont = (LinearLayout) findViewById(R.id.btnCont);
+        FrameLayout blurImageCont =  (FrameLayout) findViewById(R.id.imgCont);
+        hiddenImageCont.setTranslationY(-ScrollValue);
+        blurImageCont.setTranslationY(-ScrollValue);
+
+
+        mScrollView.getHitRect(scrollBounds);
+        if(scrollY-btnCont.getTop() > 0){
+            btnCont.setTranslationY(scrollY-btnCont.getTop());
+            btnCont.bringToFront();
+        }else{
+            btnCont.setTranslationY(0);
+        }
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(!myMediaPlayer.isPlaying()){
+            myMediaPlayer.stop();
+            myMediaPlayer.reset();
+        }
+    }
 }

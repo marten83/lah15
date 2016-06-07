@@ -16,18 +16,15 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="35sp"
         style="@style/AudioFileInfoOverlayText"
-        android:text=""
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="30dp"
-        android:padding="10dp"
+        android:text="TITLE"
+        android:padding="15dp"
         android:textColor="#ffffff"
-        android:fontFamily="serif"
-        android:textStyle="bold"
         android:layout_gravity="bottom|start"/>
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginBottom="10dp">

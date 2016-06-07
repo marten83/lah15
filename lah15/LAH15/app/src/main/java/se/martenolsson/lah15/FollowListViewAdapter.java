@@ -2,6 +2,7 @@ package se.martenolsson.lah15;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,6 +24,7 @@ public class FollowListViewAdapter extends BaseAdapter {
 	LayoutInflater inflater;
 	private List<WorldPopulation> worldpopulationlist = null;
 	private ArrayList<WorldPopulation> arraylist;
+	Typeface titleText;
 
 
 	public FollowListViewAdapter(Context context, List<WorldPopulation> worldpopulationlist) {
@@ -31,6 +33,7 @@ public class FollowListViewAdapter extends BaseAdapter {
 		inflater = LayoutInflater.from(mContext);
 		this.arraylist = new ArrayList<WorldPopulation>();
 		this.arraylist.addAll(worldpopulationlist);
+		titleText = ((ApplicationController) mContext.getApplicationContext()).geoSansBold;
 	}
 
 	public class ViewHolder {
@@ -63,6 +66,7 @@ public class FollowListViewAdapter extends BaseAdapter {
 			view = inflater.inflate(R.layout.fallowlistview_item, null);
 
 			holder.title = (TextView) view.findViewById(R.id.title);
+			holder.title.setTypeface(titleText);
 			holder.place = (TextView) view.findViewById(R.id.place);
 			holder.musik = (TextView) view.findViewById(R.id.musik);
 			holder.image = (ImageView) view.findViewById(R.id.image);

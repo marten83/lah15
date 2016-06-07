@@ -1,15 +1,19 @@
 package se.martenolsson.lah15;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
  * Created by maroln on 15-08-21.
  */
-public class AboutView extends ActionBarActivity {
+public class AboutView extends SwipeBackActivity {
     Toolbar toolbar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -17,8 +21,18 @@ public class AboutView extends ActionBarActivity {
         setContentView(R.layout.about);
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Typeface geoSans = ((ApplicationController) getApplicationContext()).geoSans;
+        TextView headerText = (TextView) findViewById(R.id.headerText);
+        headerText.setTypeface(geoSans);
+
+        TextView closeView = (TextView) findViewById(R.id.closeView);
+        closeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
     @Override

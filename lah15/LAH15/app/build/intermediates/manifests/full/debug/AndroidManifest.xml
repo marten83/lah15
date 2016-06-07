@@ -5,8 +5,8 @@
     android:versionName="1.5" >
 
     <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="21" />
+        android:minSdkVersion="19"
+        android:targetSdkVersion="23" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -33,6 +33,7 @@
             android:name="se.martenolsson.lah15.MainActivity"
             android:hardwareAccelerated="true"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -44,19 +45,29 @@
         <activity
             android:name="se.martenolsson.lah15.SingleItemView"
             android:hardwareAccelerated="true"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeTrans" >
         </activity>
         <activity
             android:name="se.martenolsson.lah15.FollowView"
             android:hardwareAccelerated="true"
             android:label="Artister du följer"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeTrans" >
         </activity>
         <activity
             android:name="se.martenolsson.lah15.chemeView"
             android:hardwareAccelerated="true"
             android:label="Spelschema"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeTrans" >
+        </activity>
+        <activity
+            android:name="se.martenolsson.lah15.playListView"
+            android:hardwareAccelerated="true"
+            android:label="Spelschema"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeTrans" >
         </activity>
         <activity
             android:name="se.martenolsson.lah15.AboutView"
@@ -64,6 +75,11 @@
             android:label="Om LAH15"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="se.martenolsson.lah15.classes.NotificationReturnSlot"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="" />
 
         <receiver android:name="se.martenolsson.lah15.AlarmReceiver" />
 

@@ -13,25 +13,56 @@
         android:layout_width="match_parent"
         android:background="@color/primary_dark_material_dark"
         android:elevation="2dp"
-        app:theme="@style/ActionBar"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEnd="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp">
 
-        <ImageButton
+        <se.martenolsson.lah15.classes.IconTextView
+            android:id="@+id/closeView"
+            android:layout_width="55dp"
+            android:gravity="center"
+            android:layout_gravity="left"
+            android:textSize="22sp"
+            android:layout_height="55dp"
+            android:textColor="#ffffff"
+            android:text="&#xf1b6;"/>
+
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spelschema"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20dp"/>
+
+        <se.martenolsson.lah15.classes.IconTextView
             android:id="@+id/removenofollow"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/heart1"
             android:layout_gravity="right"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:text="&#xf184;"
          />
-        <ImageButton
+        <se.martenolsson.lah15.classes.IconTextView
             android:id="@+id/shownofollow"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/heart1fill"
             android:layout_gravity="right"
+            android:gravity="center"
             android:visibility="gone"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:text="&#xf273;"
             />
 
     </android.support.v7.widget.Toolbar>
@@ -47,7 +78,6 @@
         android:id="@+id/pager"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        ></android.support.v4.view.ViewPager>
+        android:layout_weight="1"/>
 
-</LinearLayout><!-- From: file:/Users/martenolsson/Desktop/lah15/LAH15/app/src/main/res/layout/main_activity.xml -->
+</LinearLayout><!-- From: file:/Users/martenolsson/Documents/lah15/lah15/LAH15/app/src/main/res/layout/main_activity.xml -->

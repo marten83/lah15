@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
@@ -8,20 +8,35 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/imgCont">
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="centerCrop"
-        android:background="@drawable/mapinfobg"
-        android:adjustViewBounds="true"/>
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:background="#000000"
+            android:adjustViewBounds="true"/>
     </FrameLayout>
 
-    <View
+    <FrameLayout
+        android:visibility="invisible"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imgCont2">
+
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"/>
+
+    </FrameLayout>
+
+    <!--View
         android:layout_width="fill_parent"
         android:layout_height="55dp"
         android:background="@drawable/topfade">
-    </View>
+    </View-->
 
     <se.martenolsson.lah15.classes.ObservableScrollView
         android:id="@+id/scrollview"
@@ -29,7 +44,7 @@
         android:layout_height="fill_parent"
         android:scrollbars="none">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/paddinLayout"
@@ -42,27 +57,11 @@
                 android:scaleType="centerCrop"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
-                android:adjustViewBounds="true"/>
-
-            <TextView
-                android:id="@+id/musik"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="none"
-                android:gravity="center"
-                android:maxLines="1"
-                style="@style/AudioFileInfoOverlayText"
-                android:text="Test"
-                android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="0dp"
-                android:fontFamily="serif"
-                android:textStyle="bold"/>
-
+                android:adjustViewBounds="true"
+                android:layout_centerHorizontal="true"/>
 
             <se.martenolsson.lah15.classes.AutoResizeTextView
+                android:layout_below="@+id/imageamall"
                 android:id="@+id/title"
                 android:layout_width="fill_parent"
                 android:layout_height="55dp"
@@ -73,13 +72,50 @@
                 android:text="Test"
                 android:textColor="#ffffff"
                 android:textSize="40sp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="serif"
                 android:textStyle="bold"/>
 
+
+            <LinearLayout
+                android:id="@+id/musikCont"
+                android:layout_below="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:background="@drawable/music_fill"
+                android:layout_centerHorizontal="true"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_marginBottom="10dp">
+
+                <se.martenolsson.lah15.classes.IconTextView
+                    android:visibility="visible"
+                    android:background="@drawable/music_circle"
+                    android:layout_width="15dp"
+                    android:textSize="10sp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#52C47C"
+                    android:text="&#xf1e4;"/>
+
+                    <TextView
+                        android:id="@+id/musik"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ffffff"
+                        android:text="metal"/>
+
+            </LinearLayout>
+
             <TextView
+                android:layout_below="@+id/musikCont"
                 android:id="@+id/place"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -89,49 +125,80 @@
                 style="@style/AudioFileInfoOverlayText"
                 android:text="Test"
                 android:textColor="#ffffff"
-                android:textSize="14sp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="serif"
                 android:textStyle="bold"/>
 
-            <LinearLayout
+            <ImageView
+                android:layout_below="@+id/btnCont"
+                android:id="@+id/arrowdown"
                 android:layout_width="fill_parent"
-                android:layout_height="40dp"
+                android:layout_height="20dp"
+                android:src="@drawable/arrowdown"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_below="@+id/arrowdown"
+                android:id="@+id/text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:textSize="16dp"
+                android:fontFamily="sans-serif"
+                android:text="Test"
+                android:textColor="#FFFFFF"
+                android:background="#000000"
+                android:autoLink="web"/>
+
+
+            <LinearLayout
+                android:layout_below="@+id/place"
+                android:id="@+id/btnCont"
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="0dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
                 android:weightSum="1"
-                android:layout_gravity="bottom|center"
-                android:layout_marginBottom="5dp">
+                android:layout_gravity="bottom|center">
 
                 <LinearLayout
                     android:id="@+id/play"
                     android:layout_weight="0.5"
                     android:layout_width="fill_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:background="@drawable/button_fill"
                     android:baselineAligned="false"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="5dp"
                     android:visibility="gone"
                     android:onClick="onButtonLyssna">
 
-                    <ImageView
+                    <se.martenolsson.lah15.classes.IconTextView
+                        android:visibility="visible"
                         android:layout_width="30dp"
-                        android:layout_height="fill_parent"
-                        android:src="@drawable/play"
-                        android:gravity="center_vertical"
-                        android:layout_marginLeft="-10dp"/>
+                        android:textSize="22sp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center"
+                        android:textColor="#FFFFFF"
+                        android:text="&#xf115;"/>
 
                     <TextView
                         android:id="@+id/button1"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
-                        android:layout_marginLeft="10dp"
                         android:lines="1"
                         android:textColor="#ffffff"
                         android:gravity="center"
                         android:textStyle="bold"
+                        android:textSize="18sp"
                         android:text="LYSSNA" />
 
                 </LinearLayout>
@@ -140,50 +207,53 @@
                     android:id="@+id/stop"
                     android:layout_weight="0.5"
                     android:layout_width="fill_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:background="@drawable/button_fill"
                     android:baselineAligned="false"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="5dp"
                     android:visibility="gone"
                     android:onClick="onButtonStop">
 
-                    <ImageView
+                    <se.martenolsson.lah15.classes.IconTextView
+                        android:visibility="visible"
                         android:layout_width="30dp"
-                        android:layout_height="fill_parent"
-                        android:src="@drawable/stop"
-                        android:gravity="center_vertical"
-                        android:layout_marginLeft="-10dp"/>
+                        android:textSize="22sp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center"
+                        android:textColor="#FFFFFF"
+                        android:text="&#xf1f9;"/>
 
                     <TextView
                         android:id="@+id/button4"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
-                        android:layout_marginLeft="10dp"
                         android:lines="1"
                         android:textColor="#ffffff"
                         android:gravity="center"
                         android:textStyle="bold"
+                        android:textSize="18sp"
                         android:text="PAUSA" />
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/vanta"
                     android:layout_weight="0.5"
                     android:layout_width="fill_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:background="@drawable/button_fill"
                     android:baselineAligned="false"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="5dp"
                     android:visibility="visible">
 
                     <ProgressBar
                         android:id="@+id/loadsong"
-
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:gravity="center_vertical"
@@ -199,6 +269,7 @@
                         android:textColor="#ffffff"
                         android:gravity="center"
                         android:textStyle="bold"
+                        android:textSize="18sp"
                         android:text="LADDAR LÅT"/>
 
                 </LinearLayout>
@@ -207,30 +278,34 @@
                     android:id="@+id/followBtn"
                     android:layout_weight="0.5"
                     android:layout_width="fill_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:background="@drawable/button_fill2"
                     android:baselineAligned="false"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginRight="10dp"
                     android:onClick="onButtonFollow">
 
-                    <ImageView
+                    <se.martenolsson.lah15.classes.IconTextView
+                        android:visibility="visible"
                         android:layout_width="30dp"
-                        android:layout_height="fill_parent"
-                        android:src="@drawable/heart"
-                        android:gravity="center_vertical"
-                        android:layout_marginLeft="-10dp"/>
+                        android:textSize="22sp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center"
+                        android:textColor="#FFFFFF"
+                        android:text="&#xf19b;"/>
 
                     <TextView
                         android:id="@+id/button2"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="0dp"
                         android:lines="1"
                         android:textColor="#ffffff"
                         android:gravity="center"
                         android:textStyle="bold"
+                        android:textSize="18sp"
                         android:text="FÖLJ" />
 
                 </LinearLayout>
@@ -239,67 +314,52 @@
                     android:id="@+id/stopfollowBtn"
                     android:layout_weight="0.5"
                     android:layout_width="fill_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:background="@drawable/button_fill2"
                     android:baselineAligned="false"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginRight="10dp"
                     android:visibility="gone"
                     android:onClick="onstopButtonFollow">
 
-                    <ImageView
+                    <se.martenolsson.lah15.classes.IconTextView
+                        android:id="@+id/heart"
+                        android:visibility="visible"
                         android:layout_width="30dp"
-                        android:layout_height="fill_parent"
-                        android:src="@drawable/dislike"
-                        android:gravity="center_vertical"
-                        android:layout_marginLeft="-10dp"/>
+                        android:textSize="22sp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center"
+                        android:textColor="#FFFFFF"
+                        android:text="&#xf19b;"/>
 
                     <TextView
                         android:id="@+id/button3"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
-                        android:layout_marginLeft="10dp"
                         android:lines="1"
                         android:textColor="#ffffff"
                         android:gravity="center"
                         android:textStyle="bold"
+                        android:textSize="18sp"
                         android:text="AVFÖLJ" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/arrowdown"
-                android:layout_width="fill_parent"
-                android:layout_height="20dp"
-                android:src="@drawable/arrowdown"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="5dp"/>
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textSize="16dp"
-                android:fontFamily="sans-serif-thin"
-                android:text="Test"
-                android:textColor="#FFFFFF"
-                android:background="#000000"/>
-
-        </LinearLayout>
+        </RelativeLayout>
 
     </se.martenolsson.lah15.classes.ObservableScrollView>
 
-    <android.support.v7.widget.Toolbar
+    <!--android.support.v7.widget.Toolbar
         android:id="@+id/tool_bar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:background="@android:color/transparent"
         android:elevation="2dp"
         app:theme="@style/ActionBar"
-        xmlns:android="http://schemas.android.com/apk/res/android" />
+        xmlns:android="http://schemas.android.com/apk/res/android" /-->
 
-</FrameLayout><!-- From: file:/Users/maroln/Desktop/lah15/LAH15/app/src/main/res/layout/singleitemview.xml -->
+</FrameLayout><!-- From: file:/Users/martenolsson/Documents/lah15/lah15/LAH15/app/src/main/res/layout/singleitemview.xml -->

@@ -1,31 +1,33 @@
 package se.martenolsson.lah15;
 
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
+import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Build;
+import android.os.Handler;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.parse.ParsePush;
+import com.daimajia.swipe.SwipeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import se.martenolsson.lah15.classes.TinyDB;
+import se.martenolsson.lah15.classes.mediaPlayer;
 
 public class ListViewAdapter extends BaseAdapter {
 
@@ -34,32 +36,24 @@ public class ListViewAdapter extends BaseAdapter {
 	LayoutInflater inflater;
 	private List<WorldPopulation> worldpopulationlist = null;
 	private ArrayList<WorldPopulation> arraylist;
-
 	ArrayList<String> followList = new ArrayList<>();
+    ArrayList<String> playList = new ArrayList<>();
 	TinyDB tinydb;
 	Boolean foundInList;
-
 	private static final int TYPE_ITEM1 = 0;
 	private static final int TYPE_ITEM2 = 1;
-
 	ViewHolder holder;
+    Typeface geoSans;
+    Typeface caviar;
+
+    LinearLayout playBtn;
+    TextView playBtnText;
+    MediaPlayer myMediaPlayer;
 
 	int type;
 	@Override
 	public int getItemViewType(int position) {
-		/*tinydb = new TinyDB(mContext);
-		String adPos = tinydb.getString("adPos");
-		if(!adPos.isEmpty()){
-			if (position == Integer.parseInt(adPos)+1){
-				type = TYPE_ITEM1;
-			}
-			else {
-				type= TYPE_ITEM2;
-			}
-		}
-		else{*/
-			type= TYPE_ITEM2;
-		//}
+        type= TYPE_ITEM2;
 		return type;
 	}
 
@@ -68,20 +62,34 @@ public class ListViewAdapter extends BaseAdapter {
 		return 2; //Set nubers of different types
 	}
 
-	public ListViewAdapter(Context context, List<WorldPopulation> worldpopulationlist) {
+	public ListViewAdapter(Context context, List<WorldPopulation> worldpopulationlist, LinearLayout playBtn, TextView playBtnText, MediaPlayer myMediaPlayer) {
 		mContext = context;
 		this.worldpopulationlist = worldpopulationlist;
 		inflater = LayoutInflater.from(mContext);
 		this.arraylist = new ArrayList<WorldPopulation>();
 		this.arraylist.addAll(worldpopulationlist);
+        geoSans = ((ApplicationController) mContext.getApplicationContext()).geoSans;
+        caviar = ((ApplicationController) mContext.getApplicationContext()).caviar;
+        this.playBtn = playBtn;
+        this.playBtnText = playBtnText;
+        this.myMediaPlayer = myMediaPlayer;
 	}
 
 	public class ViewHolder {
+        SwipeLayout swipe;
+        RelativeLayout click;
 		TextView title;
 		TextView place;
 		TextView musik;
 		ImageView image;
-		ImageView heart;
+		TextView heart;
+
+        LinearLayout playSmenu;
+        LinearLayout queSmenu;
+        LinearLayout heartSmenu;
+        TextView sMenuPlayText;
+        TextView sMenuPlayQue;
+        TextView sMenuHeartText;
 	}
 
 	@Override
@@ -108,190 +116,182 @@ public class ListViewAdapter extends BaseAdapter {
 
 			/*Use TYPES to chang itemLayous at position*/
 			int type = getItemViewType(position);
-			if (type == TYPE_ITEM1) {
-				view = inflater.inflate(R.layout.listview_ad, null);
-			}
-			else {
-				view = inflater.inflate(R.layout.listview_item, null);
-				holder.title = (TextView) view.findViewById(R.id.title);
-				holder.place = (TextView) view.findViewById(R.id.place);
-				holder.musik = (TextView) view.findViewById(R.id.musik);
-				holder.image = (ImageView) view.findViewById(R.id.image);
-				holder.heart = (ImageView) view.findViewById(R.id.heart);
-			}
+            view = inflater.inflate(R.layout.listview_item, null);
+            holder.swipe = (SwipeLayout) view.findViewById(R.id.swipe);
+            holder.click = (RelativeLayout) view.findViewById(R.id.click);
+            holder.title = (TextView) view.findViewById(R.id.title);
+            holder.title.setTypeface(geoSans);
+            holder.place = (TextView) view.findViewById(R.id.place);
+            holder.place.setTypeface(caviar);
+            holder.musik = (TextView) view.findViewById(R.id.musik);
+            holder.musik.setTypeface(caviar);
+            holder.image = (ImageView) view.findViewById(R.id.image);
+            holder.heart = (TextView) view.findViewById(R.id.heart);
+
+            holder.playSmenu = (LinearLayout) view.findViewById(R.id.playSmenu);
+            holder.queSmenu = (LinearLayout) view.findViewById(R.id.queSmenu);
+            holder.sMenuPlayQue = (TextView) view.findViewById(R.id.sMenuPlayQue);
+            holder.sMenuPlayQue.setTypeface(geoSans);
+            holder.heartSmenu = (LinearLayout) view.findViewById(R.id.heartSmenu);
+            holder.sMenuPlayText = (TextView) view.findViewById(R.id.sMenuPlayText);
+            holder.sMenuPlayText.setTypeface(geoSans);
+            holder.sMenuHeartText = (TextView) view.findViewById(R.id.sMenuHeartText);
+            holder.sMenuHeartText.setTypeface(geoSans);
 			view.setTag(holder);
-			view.setBackgroundResource(R.drawable.selector);
+			//view.setBackgroundResource(R.drawable.selector);
 
 		} else {
 			holder = (ViewHolder) view.getTag();
 		}
 
+        View.OnClickListener teaserClicklistner = new View.OnClickListener() {
+            public void onClick(View view) {
+                SwipeLayout swipeTag = (SwipeLayout) view.getTag();
+                if(swipeTag.getOpenStatus()==SwipeLayout.Status.Open){
+                    swipeTag.close();
+                }else {
+                    Intent intent = new Intent(mContext, SingleItemView.class);
+                    intent.putExtra("title", (worldpopulationlist.get(position).getTitle()));
+                    intent.putExtra("musik", (worldpopulationlist.get(position).getMusik()));
+                    intent.putExtra("place", (worldpopulationlist.get(position).getPlace()));
+                    intent.putExtra("text", (worldpopulationlist.get(position).getText()));
+                    intent.putExtra("image", (worldpopulationlist.get(position).getImage()));
+                    intent.putExtra("mp3", (worldpopulationlist.get(position).getMp3()));
+                    mContext.startActivity(intent);
+                }
+            }
+        };
+
+        View.OnLongClickListener teaserLongClicklistner = new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                SwipeLayout swipeTag = (SwipeLayout) view.getTag();
+                swipeTag.toggle();
+                return false;
+            }
+        };
+
+        View.OnClickListener play = new View.OnClickListener() {
+            public void onClick(View view) {
+                new mediaPlayer(mContext, worldpopulationlist.get(position).getTitle(), worldpopulationlist.get(position).getMp3(), true, null, null, null, false);
+                SwipeLayout swipeTag = (SwipeLayout) view.getTag();
+
+                playBtn.setVisibility(View.VISIBLE);
+                playBtnText.setText(Html.fromHtml("&#xf1f9;"));
+
+                swipeTag.close();
+                refreshList();
+            }
+        };
+
+        View.OnClickListener que = new View.OnClickListener() {
+            public void onClick(View view) {
+                SwipeLayout swipeTag = (SwipeLayout) view.getTag();
+
+                String title = worldpopulationlist.get(position).getTitle();
+                String mp3 = worldpopulationlist.get(position).getMp3();
+
+                playList = tinydb.getList("playList");
+                foundInList = false;
+                for (int i = 0; i < playList.size(); i++) {
+                    if (playList.get(i).contains(mp3)) {
+                        foundInList = true;
+                    }
+                }
+                if (!foundInList) {
+                    playList.add(title + ";;" + mp3 + ";;" + "null");
+                    tinydb.putList("playList", playList);
+                }
+
+                swipeTag.close();
+                refreshList();
+            }
+        };
+
+        View.OnClickListener heart = new View.OnClickListener() {
+            public void onClick(View view) {
+                SwipeLayout swipeTag = (SwipeLayout) view.getTag();
+
+                String title = worldpopulationlist.get(position).getTitle();
+                String musik = worldpopulationlist.get(position).getMusik();
+                String place = worldpopulationlist.get(position).getPlace();
+                String text = worldpopulationlist.get(position).getText();
+                String image = worldpopulationlist.get(position).getImage();
+                String mp3 = worldpopulationlist.get(position).getMp3();
+
+                followList = tinydb.getList("followList");
+                foundInList = false;
+                for (int i = 0; i < followList.size(); i++) {
+                    if (followList.get(i).startsWith(title)) {
+                        foundInList = true;
+                    }
+                }
+                if (!foundInList) {
+                    Toast.makeText(mContext, "Du kommer att bli påmind när saker händer kring artisten", Toast.LENGTH_LONG).show();
+                    followList.add(title + ";;" + musik + ";;" + place + ";;" + text + ";;" + mp3 + ";;" + image);
+                    tinydb.putList("followList", followList);
+
+                } else {
+                    for (int i = 0; i < followList.size(); i++) {
+                        if (followList.get(i).contains(title)) {
+                            followList.remove(i);
+                            tinydb.putList("followList", followList);
+                        }
+
+                    }
+
+                }
+                swipeTag.close();
+                refreshList();
+            }
+        };
+
+        holder.click.setOnClickListener(teaserClicklistner);
+        holder.click.setOnLongClickListener(teaserLongClicklistner);
+        holder.click.setTag(holder.swipe);
+        holder.playSmenu.setOnClickListener(play);
+        holder.playSmenu.setTag(holder.swipe);
+        holder.queSmenu.setOnClickListener(que);
+        holder.queSmenu.setTag(holder.swipe);
+        holder.heartSmenu.setOnClickListener(heart);
+        holder.heartSmenu.setTag(holder.swipe);
 
 		/*Use TYPES to chang itemLayous at position*/
-		if (type == TYPE_ITEM1) {
+        ArrayList<Integer> follow = new ArrayList<>();
+        followList = tinydb.getList("followList");
+        for(int i = 0; i < followList.size(); i++) {
+            if(followList.get(i).contains(worldpopulationlist.get(position).getTitle())){
+                follow.add(position);
+            }
+        }
+        if(follow.contains(position)) {
+            holder.heart.setVisibility(View.VISIBLE);
+            holder.sMenuHeartText.setText("Avfölj");
+        }else{
+            holder.heart.setVisibility(View.GONE);
+            holder.sMenuHeartText.setText("Följ");
+        }
 
-		}else {
-			ArrayList<Integer> follow = new ArrayList<>();
-			followList = tinydb.getList("followList");
-			for(int i = 0; i < followList.size(); i++) {
-				if(followList.get(i).contains(worldpopulationlist.get(position).getTitle())){
-					follow.add(position);
-				}
-			}
-			if(follow.contains(position)) {
-				holder.heart.setVisibility(View.VISIBLE);
-			}else{
-				holder.heart.setVisibility(View.GONE);
-			}
+        holder.title.setText(worldpopulationlist.get(position).getTitle());
+        holder.place.setText(worldpopulationlist.get(position).getPlace());
+        holder.musik.setText(worldpopulationlist.get(position).getMusik().toUpperCase());
+        Glide.with(mContext)
+                .load(worldpopulationlist.get(position).getImage())
+                .bitmapTransform(new CropCircleTransformation(Glide.get(mContext).getBitmapPool()))
+                .into(holder.image);
 
-			holder.title.setText(worldpopulationlist.get(position).getTitle());
-			holder.place.setText(worldpopulationlist.get(position).getPlace());
-			holder.musik.setText(worldpopulationlist.get(position).getMusik());
-			Glide.with(mContext)
-					.load(worldpopulationlist.get(position).getImage())
-					.into(holder.image);
-		}
-
-
-		// Listen for ListView Item Click
-		view.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				// Send single item click data to SingleItemView Class
-				Intent intent = new Intent(mContext, SingleItemView.class);
-				intent.putExtra("title", (worldpopulationlist.get(position).getTitle()));
-				intent.putExtra("musik", (worldpopulationlist.get(position).getMusik()));
-				intent.putExtra("place", (worldpopulationlist.get(position).getPlace()));
-				intent.putExtra("text", (worldpopulationlist.get(position).getText()));
-				intent.putExtra("image", (worldpopulationlist.get(position).getImage()));
-				intent.putExtra("mp3", (worldpopulationlist.get(position).getMp3()));
-
-				mContext.startActivity(intent);
-			}
-		});
-
-		view.setOnLongClickListener(new View.OnLongClickListener() {
-			String title = worldpopulationlist.get(position).getTitle();
-			String musik = worldpopulationlist.get(position).getMusik();
-			String place = worldpopulationlist.get(position).getPlace();
-			String text = worldpopulationlist.get(position).getText();
-			String image = worldpopulationlist.get(position).getImage();
-			String mp3 = worldpopulationlist.get(position).getMp3();
-
-			@Override
-			public boolean onLongClick(View arg0) {
-				followList = tinydb.getList("followList");
-				foundInList = false;
-				for (int i = 0; i < followList.size(); i++) {
-					if (followList.get(i).startsWith(title)) {
-						foundInList = true;
-					}
-				}
-				AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-				builder.setTitle("Vad vill du göra?");
-				builder.setPositiveButton("ÖPPNA", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						// Send single item click data to SingleItemView Class
-						Intent intent = new Intent(mContext, SingleItemView.class);
-						intent.putExtra("title", (title));
-						intent.putExtra("musik", (musik));
-						intent.putExtra("place", (place));
-						intent.putExtra("text", (text));
-						intent.putExtra("image", (image));
-						intent.putExtra("mp3", (mp3));
-
-						mContext.startActivity(intent);
-					}
-				});
-				builder.setNegativeButton("FÖLJ", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						if (foundInList == false) {
-							Toast.makeText(mContext, "Du kommer att bli påmind när saker händer kring artisten", Toast.LENGTH_LONG).show();
-							followList.add(title + ";;" + musik + ";;" + place + ";;" + text + ";;" + mp3 + ";;" + image);
-							tinydb.putList("followList", followList);
-
-							ParsePush.subscribeInBackground(title
-											.replace(" ", "")
-											.replace("*", "")
-											.replace("'", "")
-											.replace("-", "")
-											.replace("/", "")
-											.replace(",", "")
-											.replace("ü", "u")
-											.replace("Ü", "U")
-											.replace("é", "e")
-											.replace("É", "E")
-											.replace("&", "")
-											.replace("å", "a")
-											.replace("ä", "a")
-											.replace("ö", "o")
-											.replace("Å", "A")
-											.replace("Ä", "A")
-											.replace("Ö", "O")
-											.replaceAll("[0-9]", "")
-							);
-
-						} else {
-							for (int i = 0; i < followList.size(); i++) {
-								if (followList.get(i).contains(title)) {
-									followList.remove(i);
-									tinydb.putList("followList", followList);
-
-									ParsePush.unsubscribeInBackground(title
-													.replace(" ", "")
-													.replace("*", "")
-													.replace("'", "")
-													.replace("-", "")
-													.replace("/", "")
-													.replace(",", "")
-													.replace("ü", "u")
-													.replace("Ü", "U")
-													.replace("é", "e")
-													.replace("É", "E")
-													.replace("&", "")
-													.replace("å", "a")
-													.replace("ä", "a")
-													.replace("ö", "o")
-													.replace("Å", "A")
-													.replace("Ä", "A")
-													.replace("Ö", "O")
-													.replaceAll("[0-9]", "")
-									);
-
-								}
-
-							}
-
-						}
-						notifyDataSetChanged();
-					}
-				});
-				builder.setNeutralButton("AVBRYT", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						// do nothing
-					}
-				});
-				final AlertDialog alertdialog = builder.create();
-				alertdialog.setOnShowListener(new DialogInterface.OnShowListener() {
-					@Override
-					public void onShow(DialogInterface dialog) {
-						if(foundInList == true) {
-							((Button) alertdialog.getButton(Dialog.BUTTON_NEGATIVE)).setText("AVFÖLJ");
-						}
-						((Button) alertdialog.getButton(Dialog.BUTTON_NEGATIVE)).setTextColor(Color.parseColor("#FFFFFF"));
-						((Button) alertdialog.getButton(Dialog.BUTTON_NEGATIVE)).setBackgroundColor(Color.parseColor("#C15185"));
-						((Button) alertdialog.getButton(Dialog.BUTTON_POSITIVE)).setTextColor(Color.parseColor("#FFFFFF"));
-						((Button) alertdialog.getButton(Dialog.BUTTON_POSITIVE)).setBackgroundColor(Color.parseColor("#52C47C"));
-					}
-				});
-				alertdialog.show();
-
-				return false;
-			}
-		});
 
 		return view;
 	}
+    void refreshList(){
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                notifyDataSetChanged();
+            }
+        }, 100);
+    }
 	// Filter Class
 	public void filter(String charText) {
 		charText = charText.toLowerCase(Locale.getDefault());

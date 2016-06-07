@@ -18,6 +18,10 @@
         <item name="windowActionBar">true</item>
     </style>
 
+    <style name="AppThemeTrans" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <style name="AppTheme" parent="BaseTheme">
     </style>
 

@@ -2,74 +2,95 @@
 <items version="2" >
 
     <item
-        jar="/Users/maroln/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.1/44780c2cf98f6a3cf4e77f1234d644758b329201/bolts-android-1.2.1.jar"
+        jar="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/exploded-aar/me.imid.swipebacklayout.lib/library/1.0.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="44780c2cf98f6a3cf4e77f1234d644758b329201">
-        <dex dex="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.1-687226cc5ca7c7d642ccead7a01be63329acb725.jar" />
+        sha1="6d0958dbac8e7be76690b8e85d91698dfadbd81e">
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/classes-6f516200a0e220d82c6ace66333434851c1a3f96.jar" />
     </item>
     <item
-        jar="/Users/maroln/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-e7a1e3e05368c988747dc40802faefa9fc85f5fd.jar" />
-    </item>
-    <item
-        jar="/Users/maroln/Library/Android/sdk/build-tools/21.1.2/renderscript/lib/renderscript-v8.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2b276904cd854be6d460f2bcec9cf2cddaf580c1">
-        <dex dex="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/pre-dexed/release/renderscript-v8-e21ba96ef5a6128384c883dd358784426b3f251a.jar" />
-    </item>
-    <item
-        jar="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/jars/libs/internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-9c32bce1a96b0d534db6bc12bf3ae0b6fc17b512.jar" />
-    </item>
-    <item
-        jar="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/exploded-aar/jp.co.cyberagent.android.gpuimage/gpuimage-library/1.2.3/jars/classes.jar"
+        jar="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/exploded-aar/jp.co.cyberagent.android.gpuimage/gpuimage-library/1.2.3/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="a93454051575c128e7819b068748c7a9b95c6857">
-        <dex dex="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/pre-dexed/debug/classes-fac0bc4e9523c7eb629cd2ffe2951ce81e3e4b95.jar" />
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/classes-31514b985546771a3973cbb990857c56665ef0e1.jar" />
     </item>
     <item
-        jar="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/jars/classes.jar"
+        jar="/Users/martenolsson/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0-0b4184fa51aafb479acb2fabf6e30ca9a1b1422e.jar" />
+    </item>
+    <item
+        jar="/Users/martenolsson/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.4.0/cc174c559b5177982887bf6e1b76003aebad9516/bolts-android-1.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="cc174c559b5177982887bf6e1b76003aebad9516">
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/bolts-android-1.4.0-2b8cbe927fd9d1508fbc23997dea35830ae68f22.jar" />
+    </item>
+    <item
+        jar="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/pre-dexed/debug/classes-d39226d14ee983065afe797fa4feadee92555e6f.jar" />
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/classes-90cfce5f9780b3d56b4acc2b34882aff1301db23.jar" />
     </item>
     <item
-        jar="/Users/maroln/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.5.2/ecf534dba3a8446ce84cbb797d314763be212a68/glide-3.5.2.jar"
+        jar="/Users/martenolsson/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="ecf534dba3a8446ce84cbb797d314763be212a68">
-        <dex dex="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/pre-dexed/release/glide-3.5.2-fe6672d134db4019d7967f810b09fe524727e7d3.jar" />
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/bolts-applinks-1.4.0-b910f7d5e4146d1cbb188bc7c10e5bdc19f22969.jar" />
     </item>
     <item
-        jar="/Users/maroln/Desktop/lah15/LAH15/app/libs/Parse-1.10.1.jar"
+        jar="/Users/martenolsson/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-75280a903ce27b1155e29367bf6cdc7b777b67a3.jar" />
+    </item>
+    <item
+        jar="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/libs/Parse-1.10.1.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="181b435832725bec96c11ff568bdfbccdacab944">
-        <dex dex="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/pre-dexed/debug/Parse-1.10.1-b038af89495c099092e2f637b7a24458165f39a9.jar" />
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/Parse-1.10.1-ffab8b2fd245e970cbfe16f048c747a76f300813.jar" />
     </item>
     <item
-        jar="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/exploded-aar/jp.wasabeef/glide-transformations/1.0.8/jars/classes.jar"
+        jar="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/jars/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-0f8701008d122404a0c4d09c48426f18011b396f.jar" />
+    </item>
+    <item
+        jar="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/exploded-aar/jp.wasabeef/glide-transformations/1.0.8/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="84e9680a4d06742d58e272b7e24da0dd2362e3d4">
-        <dex dex="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/pre-dexed/debug/classes-dbae5790ffa3a0c9b17de17e3910781e0b2da392.jar" />
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/classes-ed17bb9b1dcba42c68bd087260ca3ec1fd793aa5.jar" />
     </item>
     <item
-        jar="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/jars/classes.jar"
+        jar="/Users/martenolsson/Library/Android/sdk/build-tools/21.1.2/renderscript/lib/renderscript-v8.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2b276904cd854be6d460f2bcec9cf2cddaf580c1">
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/renderscript-v8-de8d233cad71707efda01300cc22c203eae24cdb.jar" />
+    </item>
+    <item
+        jar="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/Users/maroln/Desktop/lah15/LAH15/app/build/intermediates/pre-dexed/debug/classes-2f550a54d9cbd514f8b534354b355ca2b64761a8.jar" />
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/classes-89721bc38e173cebda1f49299aa80ee1d3231016.jar" />
+    </item>
+    <item
+        jar="/Users/martenolsson/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.5.2/ecf534dba3a8446ce84cbb797d314763be212a68/glide-3.5.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ecf534dba3a8446ce84cbb797d314763be212a68">
+        <dex dex="/Users/martenolsson/Documents/lah15/lah15/LAH15/app/build/intermediates/pre-dexed/debug/glide-3.5.2-59acfc9161005be0ddb344d9e42c804bcadb8af8.jar" />
     </item>
 
 </items>
