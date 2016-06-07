@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool_bar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@color/primary_dark_material_dark"
+        android:elevation="2dp"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEnd="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp">
+
+        <se.martenolsson.lah15.classes.IconTextView
+            android:id="@+id/closeView"
+            android:layout_width="55dp"
+            android:gravity="center"
+            android:layout_gravity="left"
+            android:textSize="22sp"
+            android:layout_height="55dp"
+            android:textColor="#ffffff"
+            android:text="&#xf1b6;"/>
+
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Om LAH15"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20dp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="20dp"
+        android:textSize="14dp"
+        android:lineSpacingExtra="4dp"
+        android:gravity="left|top"
+        android:text="LAH15 är inte på något vis associerad med Live At Heart. What so ever...\n\nAppen är framtagen av Mårten Olsson med inget som hellst vinstintresse. Det var mer en vilja att dela med sig av någonting bra som var drivkraften.\n\nTanken är att det kan vara en app som just DU tycker är bra och fyller sin funktion när du springer runt på Örebros finaste festival.\n\nStort tack till Kent Cederström som kom med idén och som även byggt LAH15 till iPhone, samt David Littorin för sin formhjärna. Vill ni kontakta mig så gör ni det på mail: marten.ohlsson@gmail.com"
+    />
+
+</LinearLayout>

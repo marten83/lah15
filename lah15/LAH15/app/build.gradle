@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "22.0.1"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "se.martenolsson.lah15"
@@ -26,11 +26,12 @@ repositories {
 }
 dependencies {
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:support-v4:23.1.1'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:design:23.1.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.florent37:glidepalette:1.0.6'
     compile 'com.android.support:recyclerview-v7:+'
+    compile 'com.android.support:support-v4:23.+'
 
     compile 'me.imid.swipebacklayout.lib:library:1.0.0'
 

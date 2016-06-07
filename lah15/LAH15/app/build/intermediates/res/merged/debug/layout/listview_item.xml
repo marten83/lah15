@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    swipe:leftEdgeSwipeOffset="0dp"
+    swipe:rightEdgeSwipeOffset="0dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:tag="Bottom3"
+        android:weightSum="12">
+
+        <LinearLayout
+            android:id="@+id/playSmenu"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#52C47C">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <se.martenolsson.lah15.classes.IconTextView
+                    android:id="@+id/smp"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:text="&#xf115;"/>
+
+                <TextView
+                    android:id="@+id/sMenuPlayText"
+                    android:layout_below="@+id/smp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text="Spela"
+                    android:textSize="18sp"
+                    android:textColor="#ffffff"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/queSmenu"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#353535">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <se.martenolsson.lah15.classes.IconTextView
+                    android:id="@+id/smq"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:text="&#xf208;"/>
+
+                <TextView
+                    android:id="@+id/sMenuPlayQue"
+                    android:layout_below="@+id/smq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text="låtkö"
+                    android:textSize="18sp"
+                    android:textColor="#ffffff"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/heartSmenu"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="#C15185"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <se.martenolsson.lah15.classes.IconTextView
+                    android:id="@+id/smh"
+                    android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="22sp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:text="&#xf19b;"/>
+
+                <TextView
+                    android:id="@+id/sMenuHeartText"
+                    android:layout_below="@+id/smh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                    android:text="Följ"
+                    android:textColor="#ffffff"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/click"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="15dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="10dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/circle"
+            android:adjustViewBounds="true"/>
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_toEndOf="@+id/image"
+            android:text="Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="26sp"
+            android:textColor="#000000"/>
+
+        <LinearLayout
+            android:id="@+id/placeCont"
+            android:layout_toEndOf="@+id/image"
+            android:layout_below="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Arboga"
+                android:textColor="#000000"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/musikCont"
+            android:layout_below="@+id/placeCont"
+            android:layout_toEndOf="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:background="@drawable/music_fill"
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp">
+
+            <se.martenolsson.lah15.classes.IconTextView
+                android:visibility="visible"
+                android:background="@drawable/music_circle"
+                android:layout_width="15dp"
+                android:textSize="10sp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="#52C47C"
+                android:text="&#xf1e4;"/>
+
+            <TextView
+                android:id="@+id/musik"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:text="metal"/>
+
+        </LinearLayout>
+
+        <se.martenolsson.lah15.classes.IconTextView
+            android:id="@+id/heart"
+            android:visibility="visible"
+            android:layout_width="40dp"
+            android:textSize="28sp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:textColor="#C15185"
+            android:text="&#xf19b;"/>
+
+    </RelativeLayout>
+</com.daimajia.swipe.SwipeLayout>
